@@ -1,0 +1,90 @@
+import React, { useContext, useEffect } from 'react'
+import './style.css'
+import SearchComponent, { SearchContext } from './SearchComponent'
+import { FaShoppingCart } from 'react-icons/fa'
+import './style.css'
+import { Link } from 'react-router-dom'
+import Axios from 'axios'
+
+function Navbar(props) {
+  const { setSearchData } = useContext(SearchContext)
+  const API_BASE_URL = process.env.REACT_BACKEND_API_URL || "http://localhost:7070"
+
+  // console.log(props,"Navbar")
+  const userName = localStorage.getItem("username")
+  function handleSearch(e) {
+    setSearchData(e.target.value)
+  }
+
+  useEffect(() => {
+    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+    popoverTriggerList.map(function (popoverTriggerEl) {
+      return new window.bootstrap.Popover(popoverTriggerEl)
+    })
+  }, [])
+
+  async function handleLogout(e) {
+    localStorage.getItem("cart")
+    await Axios.get(`${API_BASE_URL}/logout`)
+      .then(function (res) {
+        alert(res.data.message)
+
+      })
+      .catch(function (err) {
+        alert(err)
+      })
+    props.setIsLoggedIn(false)
+
+  }
+  return (
+
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark" id="nav" style={{ height: '80px' }}>
+      <div className="container-fluid">
+        <a className="navbar-brand" href="#">Prana's Bookstore</a>
+        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+
+        <div className="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+          {/* Centered Search Bar */}
+          <form className="d-flex mx-auto" style={{ width: "400px"}}>
+            <input className="form-control me-2" style={{borderRadius: "5px", height: "50px" }} type="search" placeholder="Search" aria-label="Search" onChange={handleSearch} />
+            <button className="btn btn-warning" style={{borderRadius: "5px", height: "50px", width:"150px" }} type="submit">Search🔍</button>
+          </form>
+          {props.isLoggedIn && userName === "Admin" && (
+            <div className="d-flex align-items-center ms-auto gap-6" style={{marginRight: "-150px"}}>
+              <Link to='/add/product' className='btn btn-info'>Add Product</Link>
+            </div>
+          )}
+
+
+          <div className="d-flex align-items-center ms-auto gap-5">
+            {!props.isLoggedIn ?
+              <Link to='/login' className='btn btn-light'>SignUp/login</Link>
+              :
+              <div className="btn-group">
+                <button type="button" className="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style={{ color: "White" }}>
+                  Hello {userName}🤗
+                </button>
+                <ul className="dropdown-menu">
+                  <Link className="dropdown-item" to='/my/profile'>My Profile</Link>
+                  {/* <Link className="dropdown-item" to="/my/orders">My Orders</Link> */}
+                  <Link className="dropdown-item" to="/save/wishlist">My Wishlist</Link>
+                  <Link><hr className="dropdown-divider"/></Link>
+                  <Link className="dropdown-item" onClick={handleLogout}>Logout</Link>
+                </ul>
+              </div>
+            }
+            <button id="mypopover" className="btn btn-info" type="button" data-bs-toggle="popover" data-bs-html="true" data-bs-trigger="click" data-bs-placement="bottom" data-bs-content="Cart is empty">
+              <FaShoppingCart /> Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+  )
+}
+
+export default Navbar

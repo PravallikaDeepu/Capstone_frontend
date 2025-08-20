@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+    <title>Document</title>
+</head>
+<body>
+<div class="row" style="margin: 40px;">
+    <div class="cols-md-5">
+        
+        <label>Customer Name:</label>
+        <input type="text" name="name" class=" form-control" id="name"/><br/><br/>
+
+
+        <label>Customer City:</label>
+        <input type="text" name="city" class=" form-control" id="city"/><br/><br/>
+      
+        <label>Customer Country:</label>
+        <input type="text" name="country"  class=" form-control" id="country"/><br/><br/>
+      
+        <label>Customer Pincode:</label>
+        <input type="number" name="pincode"  class=" form-control" id="pincode"/><br/><br/>
+
+        <label>Total</label>
+        <input type="number" name="total" id="amount" disabled/><br/><br/>
+
+        <button class="btn btn-success" id="save">Save</button><br/><br/>
+
+        <a href="https://buy.stripe.com/test_6oE2bm5Yt01KfWU9AF" class="btn btn-primary">Make Payment</a>
+    </div>
+</div>
+
+<script>
+    const myTotalPrice = localStorage.getItem("Total")
+    $("#amount").val(myTotalPrice)
+    const saveBtn = document.getElementById("save")
+    saveBtn.addEventListener("click",function()
+{
+    const name = $("#name").val()
+    const city = $("#city").val()
+    const country = $("#country").val()
+    const pincode = $("#pincode").val()
+
+    console.log(name, city, country, pincode)
+    localStorage.setItem("Name",name)
+    localStorage.setItem("City",city)
+    localStorage.setItem("Country",country)
+    localStorage.setItem("Pincode", pincode)
+    
+    const data = {
+        name: name,
+        city: city,
+        country:country,
+        pincode:pincode,
+        total: myTotalPrice
+    }
+
+      $.ajax({
+            url: "http://localhost:7070/save/customer", // Update this URL to match your backend route
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            success: function (response) {
+                alert(response.message || "Data saved successfully!");
+            },
+            error: function (xhr, status, error) {
+                console.error("Error:", error);
+                alert("Something went wrong while saving customer info.");
+            }
+        });
+})
+
+    
+</script>
+</body>
+</html>

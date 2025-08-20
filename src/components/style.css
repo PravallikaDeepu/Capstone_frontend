@@ -1,0 +1,121 @@
+*
+{
+    margin: 0;
+    padding: 0;
+   
+}
+
+.box
+{
+    margin: 50px 50px;
+    width: 350px;
+    height: 40px;
+}
+.card-container
+{
+    margin-left: 80px;
+}
+
+.image
+{
+    width: 280px;
+    height: 400px;
+    padding: 15px;
+}
+
+.price
+{
+   color: red;
+   size: 20px;
+}
+
+
+/* Navbar*/
+#search
+{
+   position: absolute;
+   right: 0;
+}
+
+.heading
+{
+    margin-left: 450px;
+    color: aliceblue;
+}
+
+#back
+{
+    margin-top: 25px;
+    position: absolute;
+    right: 0;
+}
+
+
+
+/* .view-card
+{
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 10px;
+  padding: 50px;
+} */
+
+.image1
+{
+    width: 300px;
+    height: 500px;
+    margin-top: 20px;
+}
+
+
+/* Category*/
+.category
+{
+    display: flex;
+    gap: 30px;
+    margin-left: 150px;
+    margin-top: 25px;
+}
+
+.category>button
+{
+    background-color: #819A91;
+    width: 150px;
+    border-radius: 35px;
+    color: white;
+    border-color: white;
+}
+
+#mypopoover{
+    margin-right: 25px;
+}
+
+
+#search
+{
+    height: 55px;
+}
+
+#view
+{
+    margin-top: 5px;
+    width: 15rem;
+    margin-bottom: 25px;
+}
+
+.book-card {
+  width: 18rem;
+  min-height: 550px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease;
+}
+.book-card:hover {
+  transform: scale(1.02);
+}
+
+.book-card img {
+  height: 300px;
+  object-fit: cover;
+}
