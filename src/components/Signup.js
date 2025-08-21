@@ -18,7 +18,7 @@ function Signup() {
   function register(e) {
     e.preventDefault();
     // console.log("Submitted succesfully")
-    if(mypassword == myConfirmpassword)
+    if(mypassword === myConfirmpassword)
     {
   const data = {
       user: myuser,
@@ -32,10 +32,25 @@ function Signup() {
       state:state
     };
      Axios.post(`${API_BASE_URL}/signup`,data)
+     
       .then((output) =>
       {
-        // console.log(output.data)
+        if(output.data === "Username already Present")
+        {
+          alert("Username Already used😔")
+          navigate("/signup")
+        }
+        else if(output.data === "Email already present")
+          {
+            alert("Email already present \n Please Log in to continue🧑🏾‍💻")
+            navigate("/login")
+          }
+        else
+        {
+  alert("Registration successful⌨️! \nPlease log in to continue.🧑🏾‍💻")
         navigate("/login")
+        }
+      
       })
       .catch((e)=>
       {
@@ -131,7 +146,7 @@ function Signup() {
 
         <div className="mb-3">
           <label htmlFor="pincode">Pincode</label>
-          <input type="text" id="pincode" placeholder="Enter Pincode" value={pincode} onChange={(e)=>setPincode(e.target.value)} className="form-control" required />
+          <input type="number" id="pincode" placeholder="Enter Pincode" value={pincode} onChange={(e)=>setPincode(e.target.value)} className="form-control" required />
         </div>
 
         <div className='mb-3'>

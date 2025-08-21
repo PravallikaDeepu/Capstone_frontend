@@ -54,7 +54,7 @@ function Navbar(props) {
           </form>
           {props.isLoggedIn && userName === "Admin" && (
             <div className="d-flex align-items-center ms-auto gap-6" style={{marginRight: "-150px"}}>
-              <Link to='/add/product' className='btn btn-info'>Add Product</Link>
+              <Link to='/add/product' className='btn btn-info' style={{marginLeft: "-75px"}}>Add Product</Link>
             </div>
           )}
 
@@ -76,9 +76,11 @@ function Navbar(props) {
                 </ul>
               </div>
             }
-            <button id="mypopover" className="btn btn-info" type="button" data-bs-toggle="popover" data-bs-html="true" data-bs-trigger="click" data-bs-placement="bottom" data-bs-content="Cart is empty">
+            {props.isLoggedIn && userName === !"Admin" && (
+              <button id="mypopover" className="btn btn-info" type="button" data-bs-toggle="popover" data-bs-html="true" data-bs-trigger="click" data-bs-placement="bottom" data-bs-content="Cart is empty">
               <FaShoppingCart /> Cart
             </button>
+            )}
           </div>
         </div>
       </div>

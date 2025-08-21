@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom'
 function Login(props) {
     const [myEmail,setMyEmail] = useState("")
     const [myPassword,setMyPassword] = useState("")
+    const [showPassword,setshowPassword] = useState(false)
     const API_BASE_URL = process.env.REACT_BACKEND_API_URL || "http://localhost:7070"
     const navigate = useNavigate()
     const [loading,setLoading] = useState(false)
@@ -21,6 +22,7 @@ function Login(props) {
     
   try{
     const output = await Axios.post(`${API_BASE_URL}/login`, data)
+    console.log(output)
     setLoading(false)
     if(output.data.message === "Incorrect Password")
     {
@@ -67,7 +69,10 @@ function Login(props) {
 
       <div class="mb-3">
         <label for="password" class="form-label">Password:</label>
-        <input type="password" id="password" onChange={(e)=>{setMyPassword(e.target.value)}} value={myPassword} name="myPassword" class="form-control" placeholder="Enter Password" required/>
+        <input type={showPassword? "text" :"password"} id="password" onChange={(e)=>{setMyPassword(e.target.value)}}  value={myPassword} name="myPassword" class="form-control" placeholder="Enter Password"  required/> <span
+                onClick={() => setshowPassword(!showPassword)} style={{position:"absolute", top: "430px",right: "580px"}}>
+                {showPassword ? "👁️" : "🙈"}
+              </span>
       </div>
 
       <button type="submit" class="btn btn-success w-100" onClick={handleLogin}>Login</button>
