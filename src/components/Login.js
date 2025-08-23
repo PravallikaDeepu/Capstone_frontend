@@ -69,8 +69,15 @@ function Login(props) {
 
       <div class="mb-3" style={{position:"relative"}}>
         <label for="password" class="form-label">Password:</label>
-        <input type={showPassword? "text" :"password"} id="password" onChange={(e)=>{setMyPassword(e.target.value)}}  value={myPassword} name="myPassword" class="form-control" placeholder="Enter Password"  required/> <span
-                onClick={() => setshowPassword(!showPassword)} style={{position:"absolute",top: "37px", right: "15px"}} className='show-password'>
+        <input type={showPassword? "text" :"password"} id="password" onChange={(e)=>{setMyPassword(e.target.value)}}  value={myPassword} name="myPassword" class="form-control" placeholder="Enter Password" style={{ paddingRight: "40px" }} required/> <span
+                onClick={() => setshowPassword(!showPassword)}  style={{
+      position: "absolute",
+      right: "12px",
+      top: "58%",
+      transform: "translateY(-10%)", 
+      cursor: "pointer",
+      userSelect: "none"
+    }} className='show-password'>
                 {showPassword ? "👁️" : "🙈"}
               </span>
       </div>
