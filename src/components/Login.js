@@ -67,10 +67,10 @@ function Login(props) {
         <input type="email" id="email" onChange={(e)=>{setMyEmail(e.target.value)}} value={myEmail} class="form-control" placeholder="Enter Email" required/>
       </div>
 
-      <div class="mb-3">
+      <div class="mb-3" style={{position:"relative"}}>
         <label for="password" class="form-label">Password:</label>
         <input type={showPassword? "text" :"password"} id="password" onChange={(e)=>{setMyPassword(e.target.value)}}  value={myPassword} name="myPassword" class="form-control" placeholder="Enter Password"  required/> <span
-                onClick={() => setshowPassword(!showPassword)} style={{position:"absolute", top: "430px",right: "580px"}}>
+                onClick={() => setshowPassword(!showPassword)} style={{position:"absolute",top: "37px", right: "15px"}} className='show-password'>
                 {showPassword ? "👁️" : "🙈"}
               </span>
       </div>
