@@ -23,17 +23,35 @@ function Navbar(props) {
       return new window.bootstrap.Popover(popoverTriggerEl)
     })
   }, [])
+useEffect(() => {
+  const storedUser = localStorage.getItem("username");
+  if (storedUser) {
+    props.setIsLoggedIn(true);   
+  }
+}, []);
 
+  // async function handleLogout(e) {
+  //   localStorage.getItem("cart")
+  //   await Axios.get(`${API_BASE_URL}/logout`)
+  //     .then(function (res) {
+  //       alert(res.data.message)
+
+  //     })
+  //     .catch(function (err) {
+  //       alert(err)
+  //     })
   async function handleLogout(e) {
-    localStorage.getItem("cart")
-    await Axios.get(`${API_BASE_URL}/logout`)
-      .then(function (res) {
-        alert(res.data.message)
+  try {
+    await Axios.get(`${API_BASE_URL}/logout`);
+    localStorage.removeItem("username");   
+    localStorage.removeItem("cart");     
+    props.setIsLoggedIn(false);
+    alert("Logged out successfully!");
+  } catch (err) {
+    alert("Logout failed: " + err.message);
+  }
 
-      })
-      .catch(function (err) {
-        alert(err)
-      })
+
     props.setIsLoggedIn(false)
 
   }
@@ -77,7 +95,7 @@ function Navbar(props) {
                 </ul>
               </div>
             }
-            {props.isLoggedIn && userName === !"Admin" && (
+            {props.isLoggedIn && userName !== "Admin" && (
               <button id="mypopover" className="btn btn-info" type="button" data-bs-toggle="popover" data-bs-html="true" data-bs-trigger="click" data-bs-placement="bottom" data-bs-content="Cart is empty">
               <FaShoppingCart /> Cart
             </button>
