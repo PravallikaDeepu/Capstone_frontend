@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 function Edit() {
   const { bookNo } = useParams();
-  const API_BASE_URL = process.env.REACT_BACKEND_API_URL || "http://localhost:7070";
+  const API_BASE_URL = process.env.REACT_APP_BACKEND_API_URL || "http://localhost:7070";
   const navigate = useNavigate();
   const [edit, setEdit] = useState({
     _id: "",

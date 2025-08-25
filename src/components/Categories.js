@@ -4,7 +4,7 @@ import CategoryComponent, { FictionContext } from './CategoryComponent'
 import Axios  from 'axios'
 function Categories(props) {
     const [myData,setMyData] = useState([])
-    const API_URL =process.env.REACT_BACKEND_API_URL
+    const API_URL =process.env.REACT_APP_BACKEND_API_URL
     useEffect(()=>{
         const fetchData = (async()=>{
             try{

@@ -13,7 +13,7 @@ function Signup() {
     const [country,setCountry] = useState("")
     const [state,setState] = useState("")
   const navigate = useNavigate()
-  const API_BASE_URL = process.env.REACT_BACKEND_API_URL || "http://localhost:7070"
+  const API_BASE_URL = process.env.REACT_APP_BACKEND_API_URL || "http://localhost:7070"
   
   function register(e) {
     e.preventDefault();

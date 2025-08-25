@@ -4,7 +4,7 @@ import Axios from 'axios'
 
 function Delete() {
     const {bookNo} = useParams()
-    const API_BASE_URL = process.env.REACT_BACKEND_API_URL || "http://localhost:7070"
+    const API_BASE_URL = process.env.REACT_APP_BACKEND_API_URL || "http://localhost:7070"
     const [confirmationMessage,setConfirmationMessage] = useState("")
     const navigate = useNavigate()
    useEffect(()=>{

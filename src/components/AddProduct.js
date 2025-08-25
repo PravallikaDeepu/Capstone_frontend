@@ -12,7 +12,7 @@ function ProductForm() {
   const [bdescription, setDescription] = useState("")
   const [category, setCategory] = useState("Fiction")
   const navigate = useNavigate()
-  const API_BASE_URL = process.env.REACT_BACKEND_API_URL || "http://localhost:7070"
+  const API_BASE_URL = process.env.REACT_APP_BACKEND_API_URL || "http://localhost:7070"
 
   useEffect(() => {
     const generatedDate = Date.now()

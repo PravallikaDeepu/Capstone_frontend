@@ -9,7 +9,7 @@ import Axios from 'axios'
 
 function Navbar(props) {
   const { setSearchData } = useContext(SearchContext)
-  const API_BASE_URL = process.env.REACT_BACKEND_API_URL || "http://localhost:7070"
+  const API_BASE_URL = process.env.REACT_APP_BACKEND_API_URL || "http://localhost:7070"
 
   // console.log(props,"Navbar")
   const userName = localStorage.getItem("username")

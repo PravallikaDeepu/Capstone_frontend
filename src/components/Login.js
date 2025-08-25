@@ -7,7 +7,7 @@ function Login(props) {
     const [myEmail,setMyEmail] = useState("")
     const [myPassword,setMyPassword] = useState("")
     const [showPassword,setshowPassword] = useState(false)
-    const API_BASE_URL = process.env.REACT_BACKEND_API_URL || "http://localhost:7070"
+    const API_BASE_URL = process.env.REACT_APP_BACKEND_API_URL || "http://localhost:7070"
     const navigate = useNavigate()
     const [loading,setLoading] = useState(false)
 

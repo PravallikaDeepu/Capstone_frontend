@@ -3,7 +3,7 @@ import Axios from 'axios'
 import {Link} from 'react-router-dom'
 
 function Profile() {
-     const API_BASE_URL = process.env.REACT_BACKEND_API_URL || "http://localhost:7070"
+     const API_BASE_URL = process.env.REACT_APP_BACKEND_API_URL || "http://localhost:7070"
   const userName = localStorage.getItem("username")
   const [userData,setUserData] = useState({})
     useEffect(()=>{
