@@ -9,7 +9,8 @@ function Categories(props) {
         const fetchData = (async()=>{
             try{
                 const output = await Axios.get(`${API_URL}/display/books`)
-                setMyData(output)
+                setMyData(output.data)
+                console.log(output.data,"OUT")
             }
             catch(e){
               console.log(e)
@@ -20,7 +21,8 @@ function Categories(props) {
 
     const filteredData = myData.filter((val)=>
     {
-      return  val.category.includes()
+      if(props.category === "All") return true;
+      return val.category.includes(props.category)
     })
 
   function handleAll(categoryName) {
