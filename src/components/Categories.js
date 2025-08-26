@@ -43,7 +43,7 @@ function Categories(props) {
   <button type="button" class="btn btn-outline-primary">Right</button>
 </div> */}
 
-        <button key="all" onClick={()=>handleAll("All")}>Allims</button>
+        <button key="all" onClick={()=>handleAll("All")}>All</button>
         <button key="fiction" onClick={()=>handleAll("Fiction")}>Fiction</button>
         <button key="non-fiction" onClick={()=> handleAll("Non-Fiction")}>Non-Fiction</button>
         <button key="childrenBook" onClick={()=> handleAll("Children Book")}>Children Book</button>

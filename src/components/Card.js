@@ -76,9 +76,9 @@ function Card(props) {
     const updatedWishlist = { ...wishlist };
 
     if (updatedWishlist[bookNo]) {
-      delete updatedWishlist[bookNo]; // Remove from wishlist
+      delete updatedWishlist[bookNo]; 
     } else {
-      updatedWishlist[bookNo] = bookData; // Add to wishlist
+      updatedWishlist[bookNo] = bookData; 
     }
 
     setWishlist(updatedWishlist);
@@ -100,7 +100,7 @@ function Card(props) {
     let cartData = "";
     let totalCartPrice = 0;
     for (let i in myCart) {
-      const [qty, name, unitPrice] = myCart[i];
+      const [qty, name, myImg, unitPrice] = myCart[i];
       const totalPrice = qty * unitPrice;
       totalCartPrice += totalPrice;
       cartData += `QTY: ${qty}<br/>NAME: ${name}<br/>PRICE: ₹${totalPrice}<hr/>`;
