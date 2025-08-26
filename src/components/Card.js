@@ -41,9 +41,11 @@ function Card(props) {
       navigate("/login")
     }
     else {
+      console.log(e.image)
       // console.log(username, "your username")
       const cartTitle = e.title;
       const myId = e._id;
+      const myImg = e.image
       const unitPrice = parseFloat(e.price) || 0;
       const cartKey = `${username}_cart`
       let cart = localStorage.getItem(cartKey)
@@ -51,7 +53,7 @@ function Card(props) {
         : {};
 
       if (!cart[myId]) {
-        cart[myId] = [1, cartTitle, unitPrice];
+        cart[myId] = [1, cartTitle, myImg, unitPrice];
       } else {
         cart[myId][0] += 1;
       }

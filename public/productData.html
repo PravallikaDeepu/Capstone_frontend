@@ -10,11 +10,12 @@
 
 </head>
 <body>
-    <h1>Products</h1>
-   <div class="row" style="margin-left: 100px; margin-top: 50px; margin-right: 100px;">
-        <div class="cols-md-4">
-            <table border="2px" class="table table-hover" >
-                <thead>
+    <h1 style="font-size: 35px;text-align: center; margin-top: 15px;">Shopping Cart</h1>
+   <div class="row" style="margin-left: 10px; margin-top: 20px; margin-right: 100px;">
+        <div class="cols-md-1">
+            <table border="2px" class="table table-hover table-info mx-4 pt-5" >
+                <thead class="table-danger">
+                  <th>Book Image</th>
                     <th>Book Name</th>
                     <th>Quantity</th>
                     <th>Price</th>
@@ -23,8 +24,11 @@
         
                 </tbody>
             </table>
-        <a href="/" class="btn btn-danger">Back</a>
-        <a href="CustomerData.html" class="btn btn-warning">Continue</a>
+            <div>
+
+            </div>
+        <a href="/" class="btn btn-danger" style="margin-right: 1000px;">Back</a>
+        <a href="CustomerData.html" class="btn btn-warning">Proceed to buy</a>
         </div>
          
     </div>
@@ -38,13 +42,15 @@
     $("#tbody").empty();
 
     for (let id in myCart) {
-      const [qty, name, unitPrice] = myCart[id];
+      const [qty, name, image, unitPrice] = myCart[id];
       const price = qty * unitPrice;
       totalPrice += price;
+      
 
       $("#tbody").append(`
-        <tr>
-          <td>${name}</td>
+        <tr class="col-sm-3">
+        <td><img class="px-2 mx-4 col-sm-3" src="${image}" style="height: 100px"/></td>
+          <td class="col-sm-3">${name}</td>
           <td>
             <button class="btn btn-sm btn-light"><i class="fa-solid fa-minus minus-btn" data-id="${id}"></i></button>
             ${qty}
@@ -61,8 +67,10 @@
     $("#tbody").append(`
       <tr>
         <td></td>
-        <td><strong>Total</strong></td>
-        <td><strong>₹${totalPrice}</strong></td>
+         <td></td>
+          
+        <td><strong style="color: #FF1700">Total</strong></td>
+        <td><strong style="font-size: 20px; color: #890596">₹${totalPrice}</strong></td>
       </tr>
     `);
   }

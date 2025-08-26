@@ -8,22 +8,24 @@
 
     <title>Document</title>
 </head>
-<body>
-<div class="row" style="margin: 40px;">
-    <div class="cols-md-5">
+<body style="background-color: #D8F8B7;">
+    <h2 style="margin-left: 40px; margin-top: 20px; color: #93329E;">Shipping Details</h2>
+<div class="row " style="margin: 40px; ">
+   
+    <form class="cols-md-5">
         
         <label>Customer Name:</label>
-        <input type="text" name="name" class=" form-control" id="name"/><br/><br/>
+        <input type="text" name="name" class=" form-control" id="name" required/><br/><br/>
 
 
         <label>Customer City:</label>
-        <input type="text" name="city" class=" form-control" id="city"/><br/><br/>
+        <input type="text" name="city" class=" form-control" id="city" required/><br/><br/>
       
         <label>Customer Country:</label>
-        <input type="text" name="country"  class=" form-control" id="country"/><br/><br/>
+        <input type="text" name="country"  class=" form-control" id="country" required/><br/><br/>
       
         <label>Customer Pincode:</label>
-        <input type="number" name="pincode"  class=" form-control" id="pincode"/><br/><br/>
+        <input type="number" name="pincode"  class=" form-control" id="pincode" required/><br/><br/>
 
         <label>Total</label>
         <input type="number" name="total" id="amount" disabled/><br/><br/>
@@ -31,7 +33,7 @@
         <button class="btn btn-success" id="save">Save</button><br/><br/>
 
         <a href="https://buy.stripe.com/test_6oE2bm5Yt01KfWU9AF" class="btn btn-primary">Make Payment</a>
-    </div>
+    </form>
 </div>
 
 <script>
@@ -40,6 +42,7 @@
     const saveBtn = document.getElementById("save")
     saveBtn.addEventListener("click",function()
 {
+    alert("Customer Data saved successfully!👍👍👍 /n Please click on Make Payment for payment")
     const name = $("#name").val()
     const city = $("#city").val()
     const country = $("#country").val()
@@ -60,7 +63,8 @@
     }
 
       $.ajax({
-            url: "http://localhost:7070/save/customer", // Update this URL to match your backend route
+            // url: "http://localhost:7070/save/customer", 
+            url: "https://capstone-backend-3sgk.onrender.com/save/customer",
             type: "POST",
             contentType: "application/json",
             data: JSON.stringify(data),
@@ -72,6 +76,7 @@
                 alert("Something went wrong while saving customer info.");
             }
         });
+        
 })
 
     
