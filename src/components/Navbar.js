@@ -5,7 +5,7 @@ import { FaShoppingCart } from 'react-icons/fa'
 import './style.css'
 import { Link } from 'react-router-dom'
 import Axios from 'axios'
-
+import location from './images/location.png'
 
 function Navbar(props) {
   const { setSearchData } = useContext(SearchContext)
@@ -13,6 +13,9 @@ function Navbar(props) {
 
   // console.log(props,"Navbar")
   const userName = localStorage.getItem("username")
+  const city = localStorage.getItem("City")
+  const country = localStorage.getItem("Country")
+  const pincode = localStorage.getItem("Pincode")
   function handleSearch(e) {
     setSearchData(e.target.value)
   }
@@ -60,6 +63,39 @@ useEffect(() => {
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark" id="nav" style={{ height: '80px' }}>
       <div className="container-fluid">
         <Link className="navbar-brand" to='/'>Prana's Bookstore</Link>
+
+ {/* <div className="d-flex flex-column align-items-start">
+  {props.isLoggedIn && (
+    <>
+      <div className='p-2' style={{marginLeft: "25px"}}>
+        <img src={location} alt='location' style={{marginLeft: "-25px", marginRight: "15px", height: "25px", marginTop:"15px"}}/>
+        <span style={{ color: "#ccc", fontSize: "13px" }}>
+          Delivering to <strong>{userName}</strong> 
+        </span>
+        <br />
+        <small className="text-light" style={{ fontSize: "10px", marginTop: "-105px" }}>
+          {city}, {country} - {pincode}
+        </small>
+      </div>
+    </>
+  )}
+</div> */}
+<div>
+  {props.isLoggedIn && 
+    (
+      <div style={{display:"grid", gridTemplateColumns: "0.5fr 2fr", color: "white", marginLeft: "25px"}}>
+        <div>
+          <img src={location} style={{height:  "20px", marginTop:"18px"}}/>
+        </div>
+        <div>
+          <p style={{marginTop: "12px", fontSize: "10px", color:"#A8BBA3"}}><strong>Delivering to {userName}</strong></p>
+          <p style={{marginTop: "-20px", fontSize:"13px"}}>{city}, {pincode}</p>
+        </div>
+      </div>
+    )
+  }
+</div>
+       
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>

@@ -16,7 +16,8 @@ import Edit from './components/Edit.js';
 import Delete from './components/Delete.js';
 import AddProduct from './components/AddProduct.js';
 import SaveWishlist from './components/SaveWishlist.js';
-
+import Payment from './components/Payment.js';
+import Complete from './components/Complete.js';
 function App() {
   const API_BASE_URL = process.env.REACT_BACKEND_API_URL || "http://localhost:7070"
     const [myData,setMyData] = useState([])
@@ -58,6 +59,8 @@ function App() {
     <Route path='/book/:bookNo' element={<Delete/>}></Route>
     <Route path='/add/product' element={<AddProduct/>}></Route>
     <Route path='/save/wishlist' element={<SaveWishlist/>}></Route>
+    <Route path='/make/payment' element={<Payment/>}></Route>
+    <Route path='/pay' element={<Complete/>}></Route>
       </Routes>
 </CategoryComponent>
     </SearchComponent>

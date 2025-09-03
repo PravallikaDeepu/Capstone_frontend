@@ -37,11 +37,11 @@ const [showFullDescription, setShowFullDescription] = useState(false);
       <img src={myData.image} alt={myData.title || "Book"} className="img-fluid image1" />
     </div>
     <div className="col-md-5 mt-5">
-      <h2 className="card-title">{myData.title}</h2> <hr/>
-      <h5>by {myData.author}<span> (Author)</span></h5> <hr/>
-     
-      <h4 className="price">&#8377;{myData.price}</h4>  <hr/>
-      <p>Description:</p>
+      <h2 className="card-title">{myData.title}</h2> 
+      <h5 className='fs-6 tcolor'>by {myData.author}<span> (Author)</span></h5> 
+      <h4 className="price">&#8377;{myData.price}</h4>
+      <span className='fsize'>MRP:</span> <del className='tcolor fsize'>{myData.originalPrice}</del>
+      <p style={{marginBottom: "1px", marginTop: "15px"}}><strong>Description:</strong></p>
       <p className="card-text para">
      
   {showFullDescription ? myData.description : `${myData.description?.slice(0, 180)}...`}
@@ -57,7 +57,7 @@ const [showFullDescription, setShowFullDescription] = useState(false);
     </div>
     <div className="col-md-3">
       
-      <Link to='/save/wishlist' className="btn btn-primary mb-2 w-100">View Wishlist</Link>
+      <Link to='/save/wishlist' className="btn btn-primary mb-2 w-100 ">View Wishlist</Link>
       <Link to='/' className="btn btn-outline-secondary w-100">Back</Link>
     </div>
   </div>

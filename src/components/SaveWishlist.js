@@ -92,7 +92,7 @@ function handleRemove(book) {
     <div className="d-flex flex-wrap justify-content-start">
       {console.log(wish)}
       {wish.length === 0 ? (
-        <p>No wishlist items found.</p>
+        <p style={{margin:"200px auto"}}>No wishlist items found.</p>
       ) : (
         wish.map((val, index) => (
           <div className="book-card card m-3" style={{ width: "18rem" }} key={index}>

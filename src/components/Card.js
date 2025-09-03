@@ -174,7 +174,10 @@ function viewMore(e)
       <Categories setCategory={props.setCategory} category={props.category} />
       <div className="card-container d-flex flex-wrap justify-content-start">
         {resultData.length === 0 ? (
+          <>
           <p>No books data...</p>
+          </>
+       
         ) : (
           resultData.map((value, index) => {
             const isWishlisted = wishlist.hasOwnProperty(value.bookNo);
@@ -185,6 +188,7 @@ return (
                 className="card-img-top image"
                 alt={`${value.title} book written by ${value.author}`} onClick={()=>handleView(value)}
               />
+              
               <div className="card-body">
                 <h5 className="card-title" >{value.title}</h5>
                 <p className="card-text" >by <strong style={{ color: "#347433" }}>{value.author}</strong></p>
@@ -217,8 +221,7 @@ return (
   <button className="btn btn-outline-warning" onClick={saveWish}>
     Save Wishlist
   </button>
-)}
-                  
+)}        
           </div>
         )}
       </div>

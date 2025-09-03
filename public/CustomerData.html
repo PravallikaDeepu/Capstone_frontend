@@ -30,9 +30,9 @@
         <label>Total</label>
         <input type="number" name="total" id="amount" disabled/><br/><br/>
 
-        <button class="btn btn-success" id="save">Save</button><br/><br/>
-
-        <a href="https://buy.stripe.com/test_6oE2bm5Yt01KfWU9AF" class="btn btn-primary">Make Payment</a>
+        <button type="button" class="btn btn-success" id="save">Save</button><br/><br/>
+        <a href="/make/payment" class="btn btn-primary">Make Payment</a>
+        <!-- <a href="https://buy.stripe.com/test_6oE2bm5Yt01KfWU9AF" class="btn btn-primary">Make Payment</a> -->
     </form>
 </div>
 
@@ -42,7 +42,6 @@
     const saveBtn = document.getElementById("save")
     saveBtn.addEventListener("click",function()
 {
-    alert("Customer Data saved successfully!👍👍👍 /n Please click on Make Payment for payment")
     const name = $("#name").val()
     const city = $("#city").val()
     const country = $("#country").val()
@@ -64,7 +63,7 @@
 
       $.ajax({
             // url: "http://localhost:7070/save/customer", 
-            url: "https://capstone-backend-3sgk.onrender.com/save/customer",
+            url: "http://localhost:7070/save/customer/save/customer",
             type: "POST",
             contentType: "application/json",
             data: JSON.stringify(data),
@@ -76,7 +75,7 @@
                 alert("Something went wrong while saving customer info.");
             }
         });
-        
+
 })
 
     

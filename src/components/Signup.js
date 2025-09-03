@@ -65,21 +65,14 @@ function Signup() {
       setMypassword("")
       setConfirmpassword("")
     }
-
-     
-
   }
-
-
-
-  return (
+return (
     <div className="container d-flex justify-content-center align-items-center vh-100">
       <form
-       
         method="POST"
         className="border p-4 rounded"
-        style={{ minWidth: 300, maxWidth: 400, width: '100%' }}
-      >
+        style={{ minWidth: 300, maxWidth: 400, width: '100%', marginTop: "250px" }}>
+
         <h4 className="text-center mb-4">Register</h4>
 
         <div className="mb-3">

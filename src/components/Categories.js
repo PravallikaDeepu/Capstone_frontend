@@ -26,13 +26,9 @@ function Categories(props) {
     })
 
   function handleAll(categoryName) {
-    const btn = document.getElementsByClassName("category")
-    btn.forEach((e)=>{
-      console.log(e)
-    })
- console.log("Selected category:", categoryName);
+//  console.log("Selected category:", categoryName);
   props.setCategory(categoryName);
- 
+//  console.log(categoryName, "Cate")
 }
 
   return (

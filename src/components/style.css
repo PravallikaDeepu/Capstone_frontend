@@ -2,7 +2,6 @@
 {
     margin: 0;
     padding: 0;
-   
 }
 
 .box
@@ -49,9 +48,14 @@
     position: absolute;
     right: 0;
 }
-
-
-
+.tcolor
+{
+    color: #44444E;
+}
+.fsize
+{
+    font-size: 12px;
+}
 /* .view-card
 {
   display: grid;
@@ -67,7 +71,10 @@
     margin-top: 20px;
 }
 
-
+.mt
+{
+    margin-top: -15px;
+}
 /* Category*/
 .category
 {
@@ -126,3 +133,12 @@
     top : 430px;
     right: 580px
 } */
+
+.complete
+{
+    height: 90vh;
+    background-image:url("https://collegeinfogeek.com/wp-content/uploads/2018/11/Essential-Books.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
