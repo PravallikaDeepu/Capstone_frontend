@@ -45,7 +45,7 @@ function Card(props) {
       // console.log(username, "your username")
       const cartTitle = e.title;
       const myId = e._id;
-      const myImg = e.image
+      const myImg = e.image;
       const unitPrice = parseFloat(e.price) || 0;
       const cartKey = `${username}_cart`
       let cart = localStorage.getItem(cartKey)
@@ -80,7 +80,7 @@ function Card(props) {
     } else {
       updatedWishlist[bookNo] = bookData; 
     }
-
+console.log(stored)
     setWishlist(updatedWishlist);
     localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
   };
@@ -105,7 +105,7 @@ function Card(props) {
       totalCartPrice += totalPrice;
       cartData += `QTY: ${qty}<br/>NAME: ${name}<br/>PRICE: ₹${totalPrice}<hr/>`;
       localStorage.setItem(`${username}_total`, totalCartPrice);
-    }
+    } 
 
     cartData += "<a href='productData.html' class='btn btn-success'>Continue</a>";
 
@@ -188,12 +188,12 @@ return (
                 className="card-img-top image"
                 alt={`${value.title} book written by ${value.author}`} onClick={()=>handleView(value)}
               />
-              
+              {console.log(value.original,"OP")}
               <div className="card-body">
-                <h5 className="card-title" >{value.title}</h5>
-                <p className="card-text" >by <strong style={{ color: "#347433" }}>{value.author}</strong></p>
-                <h6  style={{ fontSize: "20px", color: "orange" }}><strong><del>&#8377;{value.originalPrice}</del></strong></h6>
-                <h6 className="price" style={{ fontSize: "25px" }}><strong>&#8377;{value.price}</strong></h6>
+                <h5 className="card-title">{value.title}</h5>
+                <p className="card-text">by <strong style={{color: "#347433" }}>{value.author}</strong></p>
+                <h6 style={{fontSize: "20px", color: "orange" }}><del><strong>&#8377;{value.original}</strong></del></h6>
+                <h6 className="price" style={{fontSize: "25px" }}><strong>&#8377;{value.price}</strong></h6>
               </div>
               <div className="card-body d-flex justify-content-between">
                 {username === "admin" ? (
@@ -221,7 +221,7 @@ return (
   <button className="btn btn-outline-warning" onClick={saveWish}>
     Save Wishlist
   </button>
-)}        
+)}
           </div>
         )}
       </div>

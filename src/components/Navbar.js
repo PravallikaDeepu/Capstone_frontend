@@ -16,6 +16,7 @@ function Navbar(props) {
   const city = localStorage.getItem("City")
   const country = localStorage.getItem("Country")
   const pincode = localStorage.getItem("Pincode")
+  console.log(city, country,pincode)
   function handleSearch(e) {
     setSearchData(e.target.value)
   }

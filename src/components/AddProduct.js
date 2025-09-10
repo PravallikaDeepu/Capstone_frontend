@@ -27,16 +27,17 @@ function ProductForm() {
       bdescription,
       bname,
       bimage,
-      original,
-      bprice,
+      original: Number(original),
+      bprice: Number(bprice),
       category
     }
-
+    console.log(productData,"PD")
     try {
       const res = await Axios.post(`${API_BASE_URL}/add/products`, productData)
       console.log(res.data)
+      console.log(res,"RESPONSE FROM Form")
       alert(res.data.message)
-      navigate("/")
+      navigate("/") 
       setName('')
       setbAuthor('')
       setImage('')
@@ -53,7 +54,7 @@ function ProductForm() {
 
   return (
     <div className="container d-flex justify-content-center align-items-center vh-100">
-      <form onSubmit={save} className="p-4 shadow-lg rounded bg-white" style={{ width: "100%", maxWidth: "500px" }}>
+      <form onSubmit={save} className="p-4 shadow-lg rounded bg-white" style={{ width: "100%", maxWidth: "500px", marginTop: "300px" }}>
         <h3 className="text-center mb-4 text-primary">📚 Add New Book</h3>
 
         <div className="mb-3">
