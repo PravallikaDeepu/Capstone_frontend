@@ -18,6 +18,7 @@ import AddProduct from './components/AddProduct.js';
 import SaveWishlist from './components/SaveWishlist.js';
 import Payment from './components/Payment.js';
 import Complete from './components/Complete.js';
+import Product from './components/Product.js';
 function App() {
   const API_BASE_URL = process.env.REACT_BACKEND_API_URL || "http://localhost:7070"
     const [myData,setMyData] = useState([])
@@ -61,6 +62,7 @@ function App() {
     <Route path='/save/wishlist' element={<SaveWishlist/>}></Route>
     <Route path='/make/payment' element={<Payment/>}></Route>
     <Route path='/pay' element={<Complete/>}></Route>
+    <Route path="/producting" element={<Product/>}></Route>
       </Routes>
 </CategoryComponent>
     </SearchComponent>

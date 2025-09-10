@@ -20,6 +20,7 @@ function Card(props) {
       try {
         const output = await Axios.get(`${API_BASE_URL}/display/books`);
         setMyOutput(output.data);
+        console.log(output.data,"Card Display data")
       } catch (err) {
         console.log(err)
       }
@@ -41,12 +42,12 @@ function Card(props) {
       navigate("/login")
     }
     else {
-      console.log(e.image)
+      console.log(e.image,"Cart display")
       // console.log(username, "your username")
       const cartTitle = e.title;
       const myId = e._id;
       const myImg = e.image;
-      const unitPrice = parseFloat(e.price) || 0;
+      const unitPrice = parseFloat(e.discountedPrice) || 0;
       const cartKey = `${username}_cart`
       let cart = localStorage.getItem(cartKey)
         ? JSON.parse(localStorage.getItem(cartKey))
@@ -192,8 +193,8 @@ return (
               <div className="card-body">
                 <h5 className="card-title">{value.title}</h5>
                 <p className="card-text">by <strong style={{color: "#347433" }}>{value.author}</strong></p>
-                <h6 style={{fontSize: "20px", color: "orange" }}><del><strong>&#8377;{value.original}</strong></del></h6>
-                <h6 className="price" style={{fontSize: "25px" }}><strong>&#8377;{value.price}</strong></h6>
+                <h6 style={{fontSize: "20px", color: "orange" }}><del><strong>&#8377;{value.originalPrice}</strong></del></h6>
+                <h6 className="price" style={{fontSize: "25px" }}><strong>&#8377;{value.discountedPrice}</strong></h6>
               </div>
               <div className="card-body d-flex justify-content-between">
                 {username === "admin" ? (

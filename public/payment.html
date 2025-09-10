@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+<style>
+        .order{
+          height: 90vh;
+    background-image:url("https://collegeinfogeek.com/wp-content/uploads/2018/11/Essential-Books.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    color: black;
+        }
+    </style>
+        </head>
+<body class="order">
+     <div>
+      <h3 style="margin-left: 450px;margin-top: 35px; color: black;width: 250px;background-color: white;padding-left:18px">Secure CheckOut</h3>
+      <div class='container d-flex' style="margin-top:25px; margin-left: 350px;">
+        <form class='border p-4 rounded shadow' style="background-color: white;" id="pay-complete" >
+<div>
+            <input type="radio" name="payment" value="card" class="mr-2" style="margin-right: 15px" required/>
+            <span style="font-size: 15px;" >Pay with Card</span>
+          </div>          
+          <br />
+          <label htmlFor="w-100">Email:</label>
+          <input type='email' class='form-control'></input>
+          <p>Payment Method</p>
+          <p>Card Details</p>
+          
+          <div class="d-flex flex-row mb-3 align-items-center">
+            <input
+              type="number"
+              class="form-control is-invalid"
+              placeholder="1234 1234 1234"
+              value="1234 1234 1234"
+              style="max-width: 350px"
+            />
+
+            <div class="d-flex flex-row ml-2">
+              <img src="https://1000logos.net/wp-content/uploads/2021/11/VISA-logo.png" width="40" class="ml-2" alt="visa-logo"/>
+              <img src="https://download.logo.wine/logo/Mastercard/Mastercard-Logo.wine.png" width="40" class="ml-2" alt="master-card"/>
+              <img src="https://1000logos.net/wp-content/uploads/2016/10/American-Express-Color.png" width="40" class="ml-2" alt='american-logo' />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <input type="number" class="form-control" placeholder="MM/YY"/>
+            </div>
+            <div class="col">
+              <input type="number" class="form-control" placeholder="CVC"/>
+            </div>
+          </div>
+          <p>Cardholder name</p>
+          <input type='text' placeholder='Full name on Card' class='form-control'/>
+          <p>Country/Region</p>
+          <select class="form-select form-select-sm" aria-label="Small select example" >
+            <option selected>India</option>
+            <option> Afghanistan</option>
+            <option> Albania</option>
+            <option> Algeria</option>
+            <option> Andorra</option>
+            <option> Angola</option>
+            <option> Antigua and Barbuda</option>
+            <option> Argentina</option>
+            <option> Armenia</option>
+            <option> Australia</option>
+            <option> Austria</option>
+            <option> Austrian Empire</option>
+            <option> Azerbaijan</option>
+            <option> Pakistan</option>
+            <option> Palau</option>
+            <option> Panama</option>
+            <option> Papal States</option>
+            <option> Papua New Guinea</option>
+            <option> Paraguay</option>
+            <option> Peru</option>
+            <option> Philippines</option>
+            <option> Piedmont-Sardinia</option>
+            <option> Poland</option>
+            <option> Portugal</option>
+          </select>
+          <div style="margin-top:25px">
+            <input type="radio" name="payment" value="COD" class="mr-2" style="margin-right: 15px" required/>
+            <span style="font-size: 15px;" >Cash on Delivery</span>
+          </div>
+          <button class='btn btn-primary w-100' style="margin-top: 35px">Pay</button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      let btn = document.getElementById("pay-complete")
+      btn.addEventListener("click", function(req,res)
+    {
+        let count = 50
+        const timer = setInterval(()=>{
+          console.log(count)
+          count--
+
+          if(count===0)
+        {
+          console.log("timer is reset")
+          clearInterval(timer)
+          window.location.href= "complete.html"
+        }
+        })
+    })
+    </script>
+</body>
+</html>

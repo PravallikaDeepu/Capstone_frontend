@@ -1,70 +1,56 @@
-import React, { useEffect, useState } from 'react'
 import Axios from 'axios'
+import React, {useState,useEffect} from 'react'
 import { useNavigate } from 'react-router-dom'
 
-function ProductForm() {
-  const [bNo, setbNo] = useState("")
-  const [original, setOriginal] = useState("")
-  const [bAuthor, setbAuthor] = useState("")
-  const [bname, setName] = useState("")
-  const [bimage, setImage] = useState("")
+function Product() {
+    const [bNo, setbNo] = useState("")
+      const [original, setOriginal] = useState("")
+      const [bAuthor, setbAuthor] = useState("")
+      const [bTitle, setBTitle] = useState("")
+      const [bimage, setImage] = useState("")
   const [discountedPrice, setDiscountedPrice] = useState("")
-  const [bdescription, setDescription] = useState("")
-  const [category, setCategory] = useState("Fiction")
-  const navigate = useNavigate()
-  const API_BASE_URL = process.env.REACT_APP_BACKEND_API_URL || "http://localhost:7070"
+      const [bdescription, setDescription] = useState("")
+      const [category, setCategory] = useState("Fiction")
+      const navigate = useNavigate()
+    // const API = process.env.REACT_APP_BACKEND_API_URL || "http://localhost:8080";
+    const API = "http://localhost:7070"
+    console.log(API)
 
-  useEffect(() => {
-    const generatedDate = Date.now()
-    setbNo(generatedDate)
-  }, [])
+    
+      useEffect(() => {
+        const generatedDate = Date.now()
+        setbNo(generatedDate)
+      }, [])
 
-  async function save(e) {
-    e.preventDefault()
-    const productData = {
-      bNo,
-      bAuthor,
-      bdescription,
-      bname,
-      bimage,
-      original,
-      discountedPrice,
-      category
-    }
-    // console.log(productData,"PD")
-    try {
-      const res = await Axios.post(`${API_BASE_URL}/add/product`, productData)
-      console.log(res, "REsssu")
-      // console.log(res.data,"RESPONSE sent FROM Form")
-      // alert(res.data.message)
-      // navigate("/") 
-      // setName('')
-      // setbAuthor('')
-      // setImage('')
-      // setOriginal('')
-      // setPrice('')
-      // setDescription('')
-      // setCategory('Fiction')
-    } 
-    catch(err)
+    async function handleText(e)
     {
-      console.log(err)
-    }
-    // catch (error) {
-    //   console.error(error.config.data, "Erupu")
-    //   alert("error in the ERR")
-    // }
-//     catch (error) {
-//   console.error("Error response:", error.response);
-//   console.error("Error config:", error.config);
-//   console.error("Error message:", error.message);
-//   alert("There was an error.");
-// }
-  }
+        e.preventDefault()
+        const pData = {
+           bNo,bTitle,bAuthor,category,bimage,original, discountedPrice,bdescription
+        }
+        console.log(pData,"pData")
 
-  return (
+        const res = await Axios.post(`${API}/producting`, pData)
+        console.log(res,"RESULting response")
+        console.log(res.data.message)
+        alert(res.data.message)
+        navigate("/")
+    }
+    return (
+    // <div>
+    //     <form onSubmit={handleText}>
+    //         <h1>Add Product</h1>
+    //        <label>Book Name</label>
+    //        <input type='text' placeholder='Enter Book Name' value={bTitle} onChange={e=>setBTitle(e.target.value)}/><br/><br/>
+
+    //        <label>Book Author</label>
+    //        <input type='text' placeholder='Enter Author Name' value={bAuthor} onChange={e=>setBAuthor(e.target.value)}/><br/><br/>
+    //        <button type='submit'>Submit</button>
+
+    //     </form>
+    // </div>
     <div className="container d-flex justify-content-center align-items-center vh-100">
-      <form onSubmit={save} className="p-4 shadow-lg rounded bg-white" style={{ width: "100%", maxWidth: "500px", marginTop: "300px" }}>
+      <form onSubmit={handleText} className="p-4 shadow-lg rounded bg-white" style={{ width: "100%", maxWidth: "500px", marginTop: "300px" }}>
         <h3 className="text-center mb-4 text-primary">📚 Add New Book</h3>
 
         <div className="mb-3">
@@ -74,7 +60,7 @@ function ProductForm() {
 
         <div className="mb-3">
           <label className="form-label">Title:</label>
-          <input type="text" value={bname} onChange={e => setName(e.target.value)} className="form-control" required />
+          <input type="text" value={bTitle} onChange={e => setBTitle(e.target.value)} className="form-control" required />
         </div>
 
         <div className="mb-3">
@@ -119,4 +105,4 @@ function ProductForm() {
   )
 }
 
-export default ProductForm
+export default Product

@@ -15,7 +15,7 @@ const [showFullDescription, setShowFullDescription] = useState(false);
     const fetchData = async () => {
       await Axios.get(`http://localhost:7070/display/books/${bookNo}`)
         .then((output) => {
-          // console.log("Sucess",output.data)
+          console.log("Sucess",output.data)
           setmyData(output.data)
         })
         .catch((err) => {
@@ -39,7 +39,7 @@ const [showFullDescription, setShowFullDescription] = useState(false);
     <div className="col-md-5 mt-5">
       <h2 className="card-title">{myData.title}</h2> 
       <h5 className='fs-6 tcolor'>by {myData.author}<span> (Author)</span></h5> 
-      <h4 className="price">&#8377;{myData.price}</h4>
+      <h4 className="price">&#8377;{myData.discountedPrice}</h4>
       <span className='fsize'>MRP:</span> <del className='tcolor fsize'>{myData.originalPrice}</del>
       <p style={{marginBottom: "1px", marginTop: "15px"}}><strong>Description:</strong></p>
       <p className="card-text para">

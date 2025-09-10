@@ -9,8 +9,8 @@ import location from './images/location.png'
 
 function Navbar(props) {
   const { setSearchData } = useContext(SearchContext)
-  const API_BASE_URL = process.env.REACT_APP_BACKEND_API_URL || "http://localhost:7070"
-
+  // const API_BASE_URL = process.env.REACT_APP_BACKEND_API_URL || "http://localhost:7070"
+const API_BASE_URL = "http://localhost:7070"
   // console.log(props,"Navbar")
   const userName = localStorage.getItem("username")
   const city = localStorage.getItem("City")
@@ -110,7 +110,8 @@ useEffect(() => {
           </form>
           {props.isLoggedIn && userName === "Admin" && (
             <div className="d-flex align-items-center ms-auto gap-6" style={{marginRight: "-150px"}}>
-              <Link to='/add/product' className='btn btn-info' style={{marginLeft: "-75px"}}>Add Product</Link>
+              {/* <Link to='/add/product' className='btn btn-info' style={{marginLeft: "-75px"}}>Add Product</Link> */}
+            <Link to='/producting' className='btn btn-info' style={{marginLeft: "-75px",marginRight: "50px"}}>Add Product</Link>
             </div>
           )}
 

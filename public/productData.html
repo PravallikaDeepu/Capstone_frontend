@@ -94,6 +94,9 @@
       myCart[id][0] -= 1;
     } else {
       delete myCart[id]; 
+      localStorage.removeItem(myCart[id])
+    // localStorage.setItem(cartKey, JSON.stringify(myCart));
+
     }
     renderTable();
   });

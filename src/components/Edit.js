@@ -20,6 +20,7 @@ function Edit() {
       try {
         const response = await Axios.get(`${API_BASE_URL}/edit/books/${bookNo}`);
         const output = response.data.readData;
+    console.log(response.data.readData, "Edit book Details")
         setEdit(output);
       } catch (e) {
         console.log(e);
@@ -70,7 +71,7 @@ function Edit() {
 
         <div className="mb-3">
           <label className="form-label">Price</label>
-          <input type="number" name="price" value={edit.price} onChange={handleChange} className="form-control" required />
+          <input type="number" name="price" value={edit.discountedPrice} onChange={handleChange} className="form-control" required />
         </div>
 
         <div className="mb-3">
