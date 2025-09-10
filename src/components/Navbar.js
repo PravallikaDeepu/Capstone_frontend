@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './style.css'
 import SearchComponent, { SearchContext } from './SearchComponent'
 import { FaShoppingCart } from 'react-icons/fa'
@@ -12,6 +12,7 @@ function Navbar(props) {
   // const API_BASE_URL = process.env.REACT_APP_BACKEND_API_URL || "http://localhost:7070"
 const API_BASE_URL = "http://localhost:7070"
   // console.log(props,"Navbar")
+  const [userData,setUserData] = useState("")
   const userName = localStorage.getItem("username")
   const city = localStorage.getItem("City")
   const country = localStorage.getItem("Country")
@@ -20,6 +21,21 @@ const API_BASE_URL = "http://localhost:7070"
   function handleSearch(e) {
     setSearchData(e.target.value)
   }
+useEffect(()=>{
+       async function fetchData()
+        {
+          try{
+          const response = await Axios.get(`${API_BASE_URL}/profile/${userName}`)
+          console.log(response.data.readData, "ADDRESS")
+          setUserData(response.data.readData)
+          }
+          catch(e)
+          {
+            console.log(e)
+          }
+        }
+        fetchData()
+    },[userName])
 
   useEffect(() => {
     var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
@@ -86,11 +102,11 @@ useEffect(() => {
     (
       <div style={{display:"grid", gridTemplateColumns: "0.5fr 2fr", color: "white", marginLeft: "25px"}}>
         <div>
-          <img src={location} style={{height:  "20px", marginTop:"18px"}}/>
+          <img src={location} style={{height:  "20px", marginTop:"18px",marginLeft:"45px"}}/>
         </div>
         <div>
           <p style={{marginTop: "12px", fontSize: "10px", color:"#A8BBA3"}}><strong>Delivering to {userName}</strong></p>
-          <p style={{marginTop: "-20px", fontSize:"13px"}}>{city}, {pincode}</p>
+          <p style={{marginTop: "-20px", fontSize:"13px"}}>{userData.address}- {userData.pincode}</p>
         </div>
       </div>
     )
