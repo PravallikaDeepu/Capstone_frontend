@@ -84,7 +84,7 @@ function handleRemove(book) {
   delete savedWishlist[book.bookNo];
   localStorage.setItem(wishlistKey, JSON.stringify(savedWishlist));
   setWish(Object.values(savedWishlist));
-  navigate("/")
+  // navigate("/")
 }
 
   return (
@@ -109,7 +109,7 @@ function handleRemove(book) {
                 by <strong style={{ color: "#347433" }}>{val.author}</strong>
               </p>
               <h6 className="price" style={{fontSize: "25px"}}>
-                <strong>&#8377;{val.price}</strong>
+                <strong>&#8377;{val.discountedPrice}</strong>
               </h6>
             <button className='btn btn-outline-danger' style={{width: "80%", marginTop: "20px"}} onClick={handleRemove}>Remove</button>
             </div>
